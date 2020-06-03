@@ -38,10 +38,6 @@ function Social(props) {
 }
 
 class Quote extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
 			<React.Fragment>
@@ -50,27 +46,30 @@ class Quote extends React.Component {
 			</React.Fragment>
 			);
 	}
-
 }
-
-
 
 class RandomQuoteGenerator extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleClick = this.handleClick.bind(this);	
+		this.state = {
+			quoteId: 1,
+		}
 	}
 
 	handleClick() {
-		const quoteLength = quotes.length;
-		console.log(quoteLength);
+		var randomIndex = getRandomInt(quotes.length);
+		console.log(randomIndex);
+		this.setState({
+			quoteId: randomIndex,
+		});	
 	}
 
 	render() {
 		return (
 			<React.Fragment>
 				<div id="quote-box">
-					<Quote index={3}/>
+					<Quote index={this.state.quoteId}/>
 				</div>	
 				<div>
 					<div><Social icon={faTwitterSquare} href="tbc" /></div>
@@ -88,4 +87,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
