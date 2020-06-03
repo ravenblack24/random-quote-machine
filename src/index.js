@@ -86,6 +86,10 @@ class RandomQuoteGenerator extends React.Component {
 		}
 	}
 
+	componentDidMount() {
+		this.handleClick();
+	}
+
 	handleClick() {
 		var randomIndex = getRandomInt(quotes.length);
 		console.log(randomIndex);
