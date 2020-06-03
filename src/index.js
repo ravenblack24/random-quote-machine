@@ -29,6 +29,15 @@ const quotes = [
 	 },	 	 	 	 
 ];
 
+const colors = [
+		"#B233FF",
+		"#FF33E6",
+		"#FF3380",
+		"#FF4C33",
+		"#FFB233",
+		"#E6FF33"
+
+]
 
 class Social extends React.Component {
 
@@ -92,11 +101,13 @@ class RandomQuoteGenerator extends React.Component {
 
 	handleClick() {
 		var randomIndex = getRandomInt(quotes.length);
-		console.log(randomIndex);
+
 		this.setState({
 			quote: quotes[randomIndex].quote,
 			author: quotes[randomIndex].author,
-		});	
+		});
+
+		document.body.style.backgroundColor = colors[randomIndex];
 	}
 
 	render() {
