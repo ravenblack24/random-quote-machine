@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { faTwitterSquare } from "@fortawesome/free-brands-svg-icons";
 import { faTumblrSquare } from "@fortawesome/free-brands-svg-icons";
+import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const quotes = [
@@ -29,20 +30,47 @@ const quotes = [
 ];
 
 
-function Social(props) {
-	return (
-		<a href={props.href} id="tweet-quote">
-			<FontAwesomeIcon icon={props.icon} />
-		</a>
+class Social extends React.Component {
+
+	render() {
+		let cta;
+		let faIcon;
+		let identifier;
+
+		switch(this.props.type) {
+			case "Twitter":
+				cta = "https://twitter.com/intent/tweet?hashtags=quotes&text="+this.props.quote+" - "+this.props.author;
+				faIcon = faTwitterSquare;
+				identifier = "tweet-quote";
+				break;
+
+			case "Tumblr":
+				cta = "https://www.tumblr.com/widgets/share/tool?posttype=quote&caption="+this.props.author+"&content="+this.props.quote;
+				faIcon = faTumblrSquare;
+				identifier = "tumblr-quote";
+				break;
+
+			default:
+				cta = "#";
+				faIcon = faQuestion;
+				identifier = "unknown-quote";
+				break;
+		}
+
+		return (
+			<a href={cta} id={identifier}>
+				<FontAwesomeIcon icon={faIcon} />
+			</a>
 		);
+	}
 }
 
 class Quote extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<div id="text">{quotes[this.props.index].quote}</div>
-				<div id="author">{quotes[this.props.index].author}</div>
+				<div id="text">{this.props.quote}</div>
+				<div id="author">{this.props.author}</div>
 			</React.Fragment>
 			);
 	}
@@ -53,7 +81,8 @@ class RandomQuoteGenerator extends React.Component {
 		super(props);
 		this.handleClick = this.handleClick.bind(this);	
 		this.state = {
-			quoteId: 1,
+			quote: "",
+			author: "",
 		}
 	}
 
@@ -61,7 +90,8 @@ class RandomQuoteGenerator extends React.Component {
 		var randomIndex = getRandomInt(quotes.length);
 		console.log(randomIndex);
 		this.setState({
-			quoteId: randomIndex,
+			quote: quotes[randomIndex].quote,
+			author: quotes[randomIndex].author,
 		});	
 	}
 
@@ -69,11 +99,11 @@ class RandomQuoteGenerator extends React.Component {
 		return (
 			<React.Fragment>
 				<div id="quote-box">
-					<Quote index={this.state.quoteId}/>
+					<Quote quote={this.state.quote} author={this.state.author} />
 				</div>	
 				<div>
-					<div><Social icon={faTwitterSquare} href="tbc" /></div>
-					<div><Social icon={faTumblrSquare} href="tbc" /></div>
+					<div><Social type={"Twitter"} quote={this.state.quote} author={this.state.author} /></div>
+					<div><Social type={"Tumblr"} quote={this.state.quote} author={this.state.author} /></div>
 					<div><button id="new-quote" onClick={this.handleClick}>New quote</button></div>
 				</div>
 			</React.Fragment>
