@@ -64,9 +64,9 @@ body {
 
  }
 
- .white {
+ .icon-style {
 	font-size: 18px;
- 	color: white;
+ 	color: #FFF;
  }
 
 span.quote {
@@ -80,7 +80,7 @@ button {
 	height: 35px;
 	width: 100px;
 	border: 0;
-	color: white;
+	color: #FFF;
 	outline: none;
 }
 

@@ -69,7 +69,7 @@ class Social extends React.Component {
 
 		return (
 			<a href={cta} id={identifier} style={{background: this.props.color}} className="border-radius-5">
-				<FontAwesomeIcon icon={faIcon} className ="white" />
+				<FontAwesomeIcon icon={faIcon} className ="icon-style" />
 			</a>
 		);
 	}
@@ -134,10 +134,10 @@ class RandomQuoteGenerator extends React.Component {
 }
 
 ReactDOM.render(
-  <RandomQuoteGenerator />,
-  document.getElementById('root')
+  	<RandomQuoteGenerator />,
+  	document.getElementById('root')
 );
 
 function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
+  	return Math.floor(Math.random() * Math.floor(max));
 }
