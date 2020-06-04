@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactFCCtest from 'react-fcctest';
 import './index.css';
-import { faTwitterSquare } from "@fortawesome/free-brands-svg-icons";
-import { faTumblrSquare } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faTumblr } from "@fortawesome/free-brands-svg-icons";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
+import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const quotes = [
@@ -36,7 +38,6 @@ const colors = [
 		"#FF4C33",
 		"#FFB233",
 		"#E6FF33"
-
 ]
 
 class Social extends React.Component {
@@ -49,13 +50,13 @@ class Social extends React.Component {
 		switch(this.props.type) {
 			case "Twitter":
 				cta = "https://twitter.com/intent/tweet?hashtags=quotes&text="+this.props.quote+" - "+this.props.author;
-				faIcon = faTwitterSquare;
+				faIcon = faTwitter;
 				identifier = "tweet-quote";
 				break;
 
 			case "Tumblr":
 				cta = "https://www.tumblr.com/widgets/share/tool?posttype=quote&caption="+this.props.author+"&content="+this.props.quote;
-				faIcon = faTumblrSquare;
+				faIcon = faTumblr;
 				identifier = "tumblr-quote";
 				break;
 
@@ -67,8 +68,8 @@ class Social extends React.Component {
 		}
 
 		return (
-			<a href={cta} id={identifier}>
-				<FontAwesomeIcon icon={faIcon} />
+			<a href={cta} id={identifier} style={{background: this.props.color}} className="border-radius-5">
+				<FontAwesomeIcon icon={faIcon} className ="white" />
 			</a>
 		);
 	}
@@ -78,8 +79,8 @@ class Quote extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<div id="text">{this.props.quote}</div>
-				<div id="author">{this.props.author}</div>
+				<div id="text"><span className="quote" style={{color: this.props.color}}><FontAwesomeIcon icon={faQuoteLeft} /> {this.props.quote}</span></div>
+				<div id="author" style={{color: this.props.color}}>- {this.props.author}</div>
 			</React.Fragment>
 			);
 	}
@@ -88,40 +89,45 @@ class Quote extends React.Component {
 class RandomQuoteGenerator extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleClick = this.handleClick.bind(this);	
+		this.getRandomQuote = this.getRandomQuote.bind(this);	
 		this.state = {
 			quote: "",
 			author: "",
+			color: ""
 		}
 	}
 
 	componentDidMount() {
-		this.handleClick();
+		this.getRandomQuote();
 	}
 
-	handleClick() {
+	getRandomQuote() {
 		var randomIndex = getRandomInt(quotes.length);
+		const color = colors[randomIndex];
+		document.body.style.backgroundColor = color;
 
 		this.setState({
 			quote: quotes[randomIndex].quote,
 			author: quotes[randomIndex].author,
+			color
 		});
-
-		document.body.style.backgroundColor = colors[randomIndex];
 	}
 
 	render() {
 		return (
-			<React.Fragment>
-				<div id="quote-box">
-					<Quote quote={this.state.quote} author={this.state.author} />
-				</div>	
-				<div>
-					<div><Social type={"Twitter"} quote={this.state.quote} author={this.state.author} /></div>
-					<div><Social type={"Tumblr"} quote={this.state.quote} author={this.state.author} /></div>
-					<div><button id="new-quote" onClick={this.handleClick}>New quote</button></div>
+			<div id="quote-box" className="border-radius-5">
+				<Quote quote={this.state.quote} author={this.state.author} color={this.state.color} />
+				<div id="buttonRow">
+					<div id="social">
+						<div><Social type={"Twitter"} quote={this.state.quote} author={this.state.author} color={this.state.color} /></div>
+						<div><Social type={"Tumblr"} quote={this.state.quote} author={this.state.author} color={this.state.color} /></div>
+					</div>
+					<div id="new">
+						<div><button id="new-quote" onClick={this.getRandomQuote} style={{background: this.state.color}}  className="border-radius-5">New quote</button></div>
+					</div>
 				</div>
-			</React.Fragment>
+				<ReactFCCtest />
+			</div>
 			);
 	}
 
