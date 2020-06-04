@@ -1,8 +1,8 @@
 {
   "name": "random-quote-machine",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
-  "homepage": "https://ravenblack24.github.io/random-quote-machine",
+  "homepage": "./",
   "devDependencies": {
     "gh-pages": "^1.0.0"
   },
@@ -19,6 +19,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-fcctest": "^1.3.5",
+    "react-helmet": "^6.0.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {

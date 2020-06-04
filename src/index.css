@@ -12,6 +12,7 @@ body {
 	margin: 0 auto;
 	margin-top: 10%;
 	width: 460px;
+	max-width: 100%;
 	background: white;
 	padding: 40px;
  }

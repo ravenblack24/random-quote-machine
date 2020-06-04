@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactFCCtest from 'react-fcctest';
+import {Helmet} from "react-helmet";
 import './index.css';
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faTumblr } from "@fortawesome/free-brands-svg-icons";
@@ -115,6 +116,12 @@ class RandomQuoteGenerator extends React.Component {
 
 	render() {
 		return (
+			<React.Fragment>
+        	<Helmet>
+            	<meta charSet="utf-8" />
+            	<title>Random Quote Generator</title>
+            	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        	</Helmet>
 			<div id="quote-box" className="border-radius-5">
 				<Quote quote={this.state.quote} author={this.state.author} color={this.state.color} />
 				<div id="buttonRow">
@@ -128,6 +135,7 @@ class RandomQuoteGenerator extends React.Component {
 				</div>
 				<ReactFCCtest />
 			</div>
+			</React.Fragment>
 			);
 	}
 
