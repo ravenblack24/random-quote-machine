@@ -1,102 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
 * {
-   font-family: 'Open Sans', sans-serif;
-   box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	  font-size: 16px;
 }
 
 body {
-	margin:0;
-  	padding: 0;
+	font-family:'Open Sans', sans-serif;
+	font-size: 1rem;
 }
 
 #quote-box {
-	margin: 0 auto;
-	margin-top: 10%;
-	width: 460px;
-	max-width: 100%;
-	background: white;
-	padding: 40px;
- }
-
- #text {
- 	text-align: center;
- }
-
- #author {
- 	text-align: right;
- 	padding: 20px 0 20px 0;
- }
-
- #buttonRow {
- 	padding:0;
- 	margin:0;
- 	padding-top: 10px;
- }
-
- #buttonRow::after {
- 	content: ' ';
- 	display: block;
- 	clear:both;
- 	height: 0;
- }
-
- #social, #new {
- 	width: 50%;
- 	float:left;
- }
-
- #new {
- 	text-align: right;
- }
-
-
- #social div {
- 	display: inline;
- 	padding-right: 5px;
- 	text-align: left;
- 	
- }
-
- a {
- 	width: 40px;
- 	height: 37px;
- 	display: inline-block;
- 	text-align: center;
- 	padding-top: 9px;
-
- }
-
- .icon-style {
-	font-size: 18px;
- 	color: #FFF;
- }
-
-span.quote {
-	 font-size: 25px;
-	 padding: 0;
-	 margin: 0;
-	 font-weight: bold;
+	min-width: 22rem;
+	max-width: 35rem;
+	position: fixed;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+	background: #fff;
+	border-radius: 5px;
+	padding: 2.75rem;
 }
 
-button {
-	height: 35px;
-	width: 100px;
+.quote-container {
+	margin:0;
+	margin-bottom: 2.5rem;
+}
+
+.quote {
+	padding:0;
+	margin:0;
+	font-size: 1.5rem;
+	line-height: 1.25;
+	font-weight: 600;
+	text-align: center;
+}
+
+.quote-icon {
+	margin-right: 0.75rem;
+}
+
+.author {
+	font-weight: 400;
+	padding-top: 2rem;
+	font-size: 1.25rem;
+	text-align: right;
+}
+
+@media (min-width: 50em) {
+	
+	.quote {
+		font-size: 2rem;
+	}
+
+	.author {
+		font-size: 1.4rem;
+	}
+}
+
+.quote-social {
+	width: 2.6rem;
+	height: 2.55rem;  
+	display: inline-block; 
+	background-color: #000;
+	text-align: center;
+	padding-top: 0.3rem; 
+	margin: 0.15rem;
 	border: 0;
-	color: #FFF;
+	border-radius: 5px; 
+	font-size: 1.3rem;
+	color: #fff;
+}
+
+.quote-button:hover,
+.quote-button:active,
+.quote-social:hover,
+.quote-social:focus,
+.quote-social:active {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+
+.quote-button {
+	margin: 0;
+	height: 2.61rem;
+	width: 7.5rem;
+	color: #fff;
+	border: 0;
 	outline: none;
+	background-color: #000;
+	border-radius: 5px;
+	font-size: 1rem;
+	float: right;
 }
-
-.border-radius-5 {
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    border-radius: 5px;
-  }
-
-  a:hover, button:hover{
-  	opacity: 0.8;
-  }
-
-  a:focus, a:active {
-	border: 0;
-  	outline: none;
-  }
