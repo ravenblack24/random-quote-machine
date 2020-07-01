@@ -11,10 +11,7 @@ class RandomQuoteGenerator extends React.Component {
 	componentDidMount() {
 		fetch(QUOTEAPI).then(
 			res => res.json()
-		).then(
-			data => this.props.dispatch(setQuotes(data))
-		);
-		
+		).then( data => this.props.dispatch(setQuotes(data)));	
 	}
 
 	render() {
