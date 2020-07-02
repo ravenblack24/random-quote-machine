@@ -1,7 +1,6 @@
-let nextQuoteId = 0;
-
-const newQuote = content => ({
-    type: 'NEW_QUOTE'
+const newQuote = quoteArray => ({
+    type: 'NEW_QUOTE',
+    quotes: quoteArray
 })
 
 export default newQuote;

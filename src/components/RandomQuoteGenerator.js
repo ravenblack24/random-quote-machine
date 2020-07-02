@@ -1,17 +1,25 @@
 import React from 'react';
 import Social from './Social';
 import Quote from './Quote';
-import setQuotes from '../redux/actions/setQuotes';
+import newQuote from '../redux/actions/newQuote';
 import { connect } from 'react-redux';
 import ReactFCCtest from 'react-fcctest';
 
 const QUOTEAPI = './quote-json.json';
 
 class RandomQuoteGenerator extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			quotes: []
+		}
+	}
 	componentDidMount() {
 		fetch(QUOTEAPI).then(
 			res => res.json()
-		).then( data => this.props.dispatch(setQuotes(data)));	
+		).then( data => {
+			this.setState({quotes: data});
+			this.props.dispatch(newQuote(data))});	
 	}
 
 	render() {
@@ -26,7 +34,7 @@ class RandomQuoteGenerator extends React.Component {
 					<Quote quote={quote} author={author} color={color} />
 					<Social type={"Twitter"} quote={quote} author={author} color={color} />
 					<Social type={"Tumblr"} quote={quote} author={author}  color={color}/>
-					<button id="new-quote" onClick={() => this.props.dispatch({type: "NEW_QUOTE"})} className="quote-button" style={{background: color}}>
+					<button id="new-quote" onClick={() => this.props.dispatch(newQuote(this.state.quotes))} className="quote-button" style={{background: color}}>
 						New quote
 					</button>
 				</section>
