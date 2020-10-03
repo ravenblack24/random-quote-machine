@@ -9,7 +9,7 @@ export default class Quote extends React.Component {
 				<p className="quote" id="text">
 					<FontAwesomeIcon icon={faQuoteLeft} className="quote-icon" />
 					{this.props.quote}</p>
-				<footer class="author" id="author">
+				<footer className="author" id="author">
 					- {this.props.author}
 				</footer>
 			</blockquote>

@@ -32,7 +32,7 @@ const quotes = [
 		color: "#FFB233"
 	 },	 	
 	 { 
-		quote: "Compassion: that's the one things no machine ever had. Maybe it's the one thing that keeps men ahead of them." ,
+		quote: "Compassion: that's the one thing no machine ever had. Maybe it's the one thing that keeps men ahead of them." ,
 		author: "Dr. McCoy",
 		color: "#313B72"
 	 },	  	 	 
@@ -71,6 +71,7 @@ export default class RandomQuoteGenerator extends React.Component {
 					<title>Random Quote Generator - React.js app</title>
 					<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 				</Helmet>
+				<a href="https://github.com/ravenblack24/random-quote-machine"><img loading="lazy" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_darkblue_121621.png?resize=149%2C149" className="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1" /></a>
 				<section id="quote-box">
 					<Quote quote={quote} author={author} color={color} />
 						<Social type={"Twitter"} quote={quote} author={author} color={color} />
